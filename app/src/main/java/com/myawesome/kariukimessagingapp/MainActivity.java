@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     Intent smsServiceIntent;
     String number,last_number;
-    String amount_choice;
+    String amount_choice_one,amount_choice_two;
     String amount;
     String[] parts;
 
@@ -72,27 +72,49 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "name "+name+last_number, Toast.LENGTH_SHORT).show();
 
                     switch (amount){
+                        case "999":
+                            amount_choice_one ="1";
+                            amount_choice_two="2";
+                            break;
+
                         case "1000":
-                            amount_choice="1";
+                            amount_choice_one ="1";
+                            amount_choice_two="3";
+
+                            break;
+
+                        case "1999":
+                            amount_choice_one ="2";
+                            amount_choice_two="2";
+
                             break;
 
                         case "2000":
-                            amount_choice="2";
+                            amount_choice_one ="2";
+                            amount_choice_two="3";
+                            break;
+
+                        case "2999":
+                            amount_choice_one ="3";
+                            amount_choice_two="2";
 
                             break;
 
                         case "3000":
-                            amount_choice="3";
+                            amount_choice_one ="3";
+                            amount_choice_two="3";
 
                             break;
+
                     }
 
-                    if(Integer.parseInt(amount)==1000||Integer.parseInt(amount)==2000||Integer.parseInt(amount)==3000){
+                    if(Integer.parseInt(amount)==1000||Integer.parseInt(amount)==2000||Integer.parseInt(amount)==3000||Integer.parseInt(amount)==999||Integer.parseInt(amount)==1999||Integer.parseInt(amount)==2999){
                         Intent i = new HoverParameters.Builder(MainActivity.this)
-                                .request("1bd0ad14")
+                                .request("7348ec75")
                                 .showUserStepDescriptions(false)
                                 .extra("number", last_number) // Only if your action has variables
-                                .extra("amount",amount_choice)
+                                .extra("choiceOne", amount_choice_one)
+                                .extra("choiceTwo", amount_choice_two)
                                 .buildIntent();
                         startActivityForResult(i, 0);
                     }
